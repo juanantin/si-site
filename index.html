@@ -620,59 +620,94 @@
     max-width: 640px;
   }
 
-  /* ==================== THE MOMENT (DEV CLIP DETAIL) ==================== */
+  /* ==================== THE MOMENT (TRIPTYCH) ==================== */
   .moment {
     background: linear-gradient(180deg, transparent 0%, var(--bg-soft) 100%);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
-  .moment-grid {
+
+  .evidence-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
   }
-  .moment-clip {
+
+  .evidence-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .evidence-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .evidence-clip {
     position: relative;
     aspect-ratio: 9/16;
-    max-height: 80vh;
     background: #000;
     border: 1px solid var(--rule);
     overflow: hidden;
+    box-shadow:
+      0 0 40px rgba(245, 196, 90, 0.06);
   }
-  .moment-clip video {
+
+  .evidence-clip video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .moment-clip-frame {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border: 1px solid rgba(245, 196, 90, 0.15);
-    margin: 8px;
+    display: block;
   }
 
-  .moment-text h3 {
+  .evidence-caption h4 {
     font-family: var(--serif);
-    font-size: clamp(36px, 4.5vw, 56px);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -1.5px;
-    margin-bottom: 32px;
+    font-size: 24px;
+    font-weight: 600;
     color: var(--cream);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
   }
-  .moment-text h3 em {
-    font-style: italic;
-    color: var(--gold-bright);
-  }
-  .moment-text p {
-    font-size: 17px;
-    line-height: 1.7;
+
+  .evidence-caption p {
+    font-size: 14px;
+    line-height: 1.55;
     color: var(--cream-dim);
-    margin-bottom: 20px;
-    max-width: 480px;
   }
+
+  /* Bottom metadata bar */
+  .moment-meta-bottom {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .moment-meta-bottom dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .moment-meta-bottom dd {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--gold-bright);
+    letter-spacing: -0.3px;
+  }
+
+  /* Keep the old moment-meta styles around for compat (no harm) */
   .moment-meta {
     margin-top: 40px;
     padding-top: 32px;
@@ -1225,8 +1260,8 @@
   @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; gap: 60px; }
     .hero-clip { max-width: 360px; margin: 0 auto; }
-    .moment-grid { grid-template-columns: 1fr; gap: 60px; }
-    .moment-clip { max-width: 400px; margin: 0 auto; }
+    .evidence-grid { grid-template-columns: 1fr; gap: 60px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .moment-meta-bottom { grid-template-columns: repeat(2, 1fr); }
     .press-list { grid-template-columns: 1fr; }
     .edge-grid { grid-template-columns: 1fr; }
     .buy-steps { grid-template-columns: 1fr; }
@@ -1362,33 +1397,62 @@
 <section class="moment" id="moment">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-kicker">EVIDENCE · 001</div>
+      <div class="section-kicker">EVIDENCE</div>
       <h2 class="section-title">
         Recorded inside.<br>
         <em>Before the cameras.</em>
       </h2>
       <p class="section-deck">
-        On April 25, 2026, Trump hosted the second annual $TRUMP holders gala at Mar-a-Lago. Press covered the contest. We captured the speech. The phrase he used had never been said before in public.
+        On April 25, 2026, Trump hosted the second annual $TRUMP holders gala at Mar-a-Lago. Press covered the contest. We captured the speech, the room, and the moment the ticker was named.
       </p>
     </div>
-    <div class="moment-grid">
-      <div class="moment-clip">
-        <video src="dev_clip.mp4" controls muted loop playsinline preload="metadata"></video>
-        <div class="moment-clip-frame"></div>
+
+    <div class="evidence-grid">
+
+      <!-- Evidence 001: The Speech -->
+      <div class="evidence-card">
+        <div class="evidence-num">EVIDENCE · 001</div>
+        <div class="evidence-clip">
+          <video src="evidence_speech.mp4" controls muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="evidence-caption">
+          <h4>The speech.</h4>
+          <p>President Trump at the podium. Phone capture from the audience. The phrase nobody else had heard.</p>
+        </div>
       </div>
-      <div class="moment-text">
-        <h3>One phrase.<br><em>One ignition.</em></h3>
-        <p>
-          Two hundred ninety-seven $TRUMP holders. One ballroom. One keynote. One phrase that hadn't entered the public record yet.
-        </p>
-        <dl class="moment-meta">
-          <dt>Date</dt>      <dd>April 25, 2026</dd>
-          <dt>Venue</dt>     <dd>Mar-a-Lago, Palm Beach</dd>
-          <dt>Event</dt>     <dd>$TRUMP holders gala / keynote</dd>
-          <dt>Recording</dt> <dd>Audience capture · unreleased</dd>
-        </dl>
+
+      <!-- Evidence 002: The Room -->
+      <div class="evidence-card">
+        <div class="evidence-num">EVIDENCE · 002</div>
+        <div class="evidence-clip">
+          <video src="evidence_crowd.mp4" controls muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="evidence-caption">
+          <h4>The room.</h4>
+          <p>Mar-a-Lago Grand Ballroom. Phones raised. Two hundred ninety-seven attendees inside the most exclusive crypto conference in the world.</p>
+        </div>
       </div>
+
+      <!-- Evidence 003: The Program -->
+      <div class="evidence-card">
+        <div class="evidence-num">EVIDENCE · 003</div>
+        <div class="evidence-clip">
+          <video src="evidence_program.mp4" controls muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="evidence-caption">
+          <h4>The ticker, written on the program.</h4>
+          <p>The official $TRUMP gala program — April 25, 2026, Mar-a-Lago. The ticker was decided in the room. We wrote it down.</p>
+        </div>
+      </div>
+
     </div>
+
+    <dl class="moment-meta-bottom">
+      <div class="meta-item"><dt>Date</dt><dd>April 25, 2026</dd></div>
+      <div class="meta-item"><dt>Venue</dt><dd>Mar-a-Lago, Palm Beach</dd></div>
+      <div class="meta-item"><dt>Event</dt><dd>$TRUMP holders gala · keynote</dd></div>
+      <div class="meta-item"><dt>Recording</dt><dd>Audience capture · unreleased</dd></div>
+    </dl>
   </div>
 </section>
 
