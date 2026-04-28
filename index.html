@@ -288,7 +288,7 @@
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 80px;
-    align-items: center;
+    align-items: start;
   }
   .hero-text { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
   @keyframes heroIn {
@@ -351,6 +351,73 @@
     transform-origin: center;
   }
 
+  /* Quote-as-title — slightly smaller than a normal title since it's longer */
+  .hero-title-quote {
+    font-style: italic;
+    font-size: clamp(36px, 4.8vw, 68px);
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    position: relative;
+    padding-left: 0;
+    max-width: 700px;
+    margin-bottom: 28px;
+  }
+  .hero-title-quote em {
+    font-style: italic;
+  }
+  .hero-title-quote .hero-quote-mark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 0;
+    color: var(--gold);
+    opacity: 0.55;
+    margin-right: 4px;
+    user-select: none;
+    vertical-align: -0.15em;
+  }
+
+  /* Subtitle — small but visible */
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: var(--cream-dim);
+    margin-bottom: 12px;
+  }
+  .hero-subtitle em {
+    font-style: italic;
+    color: var(--gold-bright);
+    font-weight: 400;
+  }
+  .hero-subtitle .strike {
+    position: relative;
+    display: inline-block;
+    color: var(--cream-dim);
+  }
+  .hero-subtitle .strike::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2px;
+    right: -2px;
+    height: 3px;
+    background: var(--red);
+    transform: rotate(-2deg);
+  }
+
+  /* Attribution — smaller, mono, gold */
+  .hero-attribution {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
   .hero-deck {
     font-family: var(--serif);
     font-size: 24px;
@@ -361,51 +428,9 @@
     max-width: 520px;
   }
 
-  /* Hero quote — the Trump line as the deck */
-  .hero-quote {
-    position: relative;
-    margin: 0 0 48px 0;
-    padding: 0 0 0 36px;
-    max-width: 580px;
-    border-left: 2px solid var(--gold);
-  }
-  .hero-quote-mark {
-    position: absolute;
-    top: -28px;
-    left: 18px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 80px;
-    line-height: 1;
-    color: var(--gold);
-    opacity: 0.55;
-    user-select: none;
-  }
-  .hero-quote {
-    font-family: var(--serif);
-    font-size: clamp(20px, 1.9vw, 26px);
-    font-style: italic;
-    line-height: 1.45;
-    color: var(--cream);
-    letter-spacing: -0.3px;
-  }
-  .hero-quote em {
-    color: var(--gold-bright);
-    font-style: italic;
-  }
-  .hero-quote cite {
-    display: block;
-    margin-top: 18px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-style: normal;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
   @media (max-width: 700px) {
-    .hero-quote { padding-left: 20px; }
-    .hero-quote-mark { font-size: 60px; left: 8px; top: -20px; }
+    .hero-title-quote { font-size: 32px; }
+    .hero-subtitle { font-size: 20px; }
   }
 
   .hero-meta {
@@ -505,6 +530,7 @@
     border: 1px solid var(--gold-dim);
     background: var(--bg-card);
     padding: 12px;
+    margin-top: 380px;
     box-shadow:
       0 0 80px rgba(245, 196, 90, 0.15),
       0 0 200px rgba(245, 196, 90, 0.08);
@@ -1274,15 +1300,16 @@
         <span class="sep">/</span>
         <span>25 APR 2026</span>
       </div>
-      <h1 class="hero-title">
-        Before the<br>
-        <span class="strike">press</span> <em>caught up.</em>
-      </h1>
-      <blockquote class="hero-quote">
+      <h1 class="hero-title hero-title-quote">
         <span class="hero-quote-mark">&ldquo;</span>
         Artificial Intelligence doesn't sound so good. <em>Superior Intelligence</em> sounds better.
-        <cite>— President Donald J. Trump · Mar-a-Lago · April 25, 2026</cite>
-      </blockquote>
+      </h1>
+      <p class="hero-subtitle">
+        Before the <span class="strike">press</span> <em>caught up.</em>
+      </p>
+      <p class="hero-attribution">
+        — President Donald J. Trump · Mar-a-Lago · April 25, 2026
+      </p>
       <div class="hero-meta">
         <div class="hero-meta-row">
           <span class="hero-meta-label">Ticker</span>
@@ -1320,7 +1347,6 @@
     <div class="hero-clip">
       <video id="heroPromo" src="si_promo.mp4" muted loop autoplay playsinline preload="auto" onclick="toggleSound(this)"></video>
       <div class="hero-clip-caption">
-        <span>◉ THE PROMO</span>
         <span style="color: var(--cream-dim);">tap to unmute</span>
       </div>
     </div>
@@ -1561,7 +1587,7 @@
   // Toggle sound on hero promo on click
   function toggleSound(vid) {
     vid.muted = !vid.muted;
-    const caption = vid.parentElement.querySelector('.hero-clip-caption span:last-child');
+    const caption = vid.parentElement.querySelector('.hero-clip-caption span');
     if (caption) {
       caption.textContent = vid.muted ? 'tap to unmute' : '♪ playing — tap to mute';
     }
