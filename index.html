@@ -7,12 +7,12 @@
 <meta name="description" content="April 25, 2026. Mar-a-Lago. Trump named it first. We were in the room.">
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=3">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=3">
 <meta name="theme-color" content="#d4a945">
 
 <!-- OG / Twitter tags for link previews -->
@@ -361,6 +361,53 @@
     max-width: 520px;
   }
 
+  /* Hero quote — the Trump line as the deck */
+  .hero-quote {
+    position: relative;
+    margin: 0 0 48px 0;
+    padding: 0 0 0 36px;
+    max-width: 580px;
+    border-left: 2px solid var(--gold);
+  }
+  .hero-quote-mark {
+    position: absolute;
+    top: -28px;
+    left: 18px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 80px;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.55;
+    user-select: none;
+  }
+  .hero-quote {
+    font-family: var(--serif);
+    font-size: clamp(20px, 1.9vw, 26px);
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--cream);
+    letter-spacing: -0.3px;
+  }
+  .hero-quote em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+  .hero-quote cite {
+    display: block;
+    margin-top: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-style: normal;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  @media (max-width: 700px) {
+    .hero-quote { padding-left: 20px; }
+    .hero-quote-mark { font-size: 60px; left: 8px; top: -20px; }
+  }
+
   .hero-meta {
     display: flex;
     flex-direction: column;
@@ -464,17 +511,7 @@
     animation: heroIn 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .hero-clip::before {
-    content: '◉ LIVE · 42s';
-    position: absolute;
-    top: -12px;
-    left: 16px;
-    background: var(--bg);
-    padding: 4px 14px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    border: 1px solid var(--gold-dim);
+    display: none;
   }
   .hero-clip video {
     width: 100%;
@@ -1216,7 +1253,6 @@
     </a>
     <div class="nav-links">
       <a href="#moment">The Moment</a>
-      <a href="#quote">The Quote</a>
       <a href="#press">Press</a>
       <a href="#edge">The Edge</a>
       <a href="#buy">How to Buy</a>
@@ -1242,10 +1278,11 @@
         Before the<br>
         <span class="strike">press</span> <em>caught up.</em>
       </h1>
-      <p class="hero-deck">
-        April 25 · Mar-a-Lago. <em>Superior Intelligence.</em><br>
-        The cameras missed it. We didn't.
-      </p>
+      <blockquote class="hero-quote">
+        <span class="hero-quote-mark">&ldquo;</span>
+        Artificial Intelligence doesn't sound so good. <em>Superior Intelligence</em> sounds better.
+        <cite>— President Donald J. Trump · Mar-a-Lago · April 25, 2026</cite>
+      </blockquote>
       <div class="hero-meta">
         <div class="hero-meta-row">
           <span class="hero-meta-label">Ticker</span>
@@ -1320,20 +1357,6 @@
           <dt>Recording</dt> <dd>Audience capture · unreleased</dd>
         </dl>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE QUOTE ============ -->
-<section class="quote" id="quote">
-  <div class="quote-inner">
-    <div class="quote-mark">&ldquo;</div>
-    <p class="quote-body">
-      Artificial Intelligence doesn't sound so good. <span class="gold">Superior Intelligence</span> sounds better.
-    </p>
-    <div class="quote-attribution">
-      <div class="quote-attrib-name">— President Donald J. Trump</div>
-      <div class="quote-attrib-meta">Mar-a-Lago Keynote · April 25, 2026</div>
     </div>
   </div>
 </section>
