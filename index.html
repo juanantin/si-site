@@ -534,9 +534,10 @@
       0 0 80px rgba(245, 196, 90, 0.15),
       0 0 200px rgba(245, 196, 90, 0.08);
     animation: heroIn 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .hero-clip::before {
-    display: none;
+    /* Constrain so full 9:16 frame fits the viewport.
+       width = (available height) * 9/16, capped at 380px */
+    width: min(380px, calc((100vh - 320px) * 9/16));
+    margin-left: auto;
   }
   .hero-clip video {
     width: 100%;
@@ -545,6 +546,9 @@
     background: #000;
     display: block;
     cursor: pointer;
+  }
+  .hero-clip::before {
+    display: none;
   }
   .hero-clip-caption {
     margin-top: 14px;
