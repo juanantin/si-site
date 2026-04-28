@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$SI — Superior Intelligence</title>
+<meta name="description" content="April 25, 2026. Mar-a-Lago. Trump named it first. We were in the room.">
+
+<!-- OG / Twitter tags for link previews -->
+<meta property="og:title" content="$SI — Superior Intelligence">
+<meta property="og:description" content="April 25, 2026. Mar-a-Lago. The phrase before the press caught up.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Fonts: refined editorial pairing -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-soft: #141412;
+    --bg-card: #1a1a18;
+    --gold: #d4a945;
+    --gold-bright: #f5c45a;
+    --gold-dim: #8a6d2c;
+    --cream: #f0e8d8;
+    --cream-dim: #b8b0a0;
+    --rule: rgba(245, 196, 90, 0.25);
+    --red: #c8362e;
+
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+
+    --maxw: 1280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ==================== ATMOSPHERE ==================== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(245, 196, 90, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(200, 54, 46, 0.04) 0%, transparent 60%);
+  }
+
+  /* Faint film grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ==================== TOP TICKER BAR ==================== */
+  .ticker-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    z-index: 90;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: tickerScroll 60s linear infinite;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .ticker-track span { display: inline-flex; align-items: center; gap: 12px; }
+  .ticker-track .arrow { color: #4ade80; }
+  @keyframes tickerScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ==================== NAVIGATION ==================== */
+  nav {
+    position: fixed;
+    top: 36px;
+    left: 0;
+    right: 0;
+    height: 72px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+  }
+  .nav-inner {
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--cream);
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: url('si_logo.jpg') center/cover;
+    border: 1px solid var(--gold-dim);
+  }
+  .brand-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .brand-text small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--cream-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-bright); }
+  .nav-cta {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    background: var(--gold) !important;
+    color: var(--bg) !important;
+    padding: 10px 20px;
+    border-radius: 2px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--gold-bright) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 180px 40px 120px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.95) 80%, var(--bg) 100%);
+    z-index: 2;
+  }
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: url('si_banner.jpg') center/cover;
+    opacity: 0.35;
+    filter: blur(2px);
+    z-index: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-text { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .hero-kicker .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero-kicker .sep { color: var(--rule); }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 32px;
+    color: var(--cream);
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-bright);
+    font-weight: 400;
+  }
+  .hero-title .strike {
+    position: relative;
+    display: inline-block;
+    color: var(--cream-dim);
+  }
+  .hero-title .strike::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -4px;
+    right: -4px;
+    height: 6px;
+    background: var(--red);
+    transform: rotate(-2deg);
+    transform-origin: center;
+  }
+
+  .hero-deck {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--cream-dim);
+    margin-bottom: 48px;
+    max-width: 520px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-meta-row {
+    display: flex;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .hero-meta-label {
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    width: 140px;
+    flex-shrink: 0;
+  }
+  .hero-meta-value {
+    color: var(--gold-bright);
+    font-weight: 500;
+  }
+  .hero-meta-value.contract {
+    word-break: break-all;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .hero-meta-value.contract:hover { color: var(--cream); }
+  .copy-hint {
+    color: var(--cream-dim);
+    font-size: 10px;
+    margin-left: 8px;
+    opacity: 0.5;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg);
+    border: 1px solid var(--gold);
+  }
+  .btn-primary:hover {
+    background: var(--gold-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 196, 90, 0.3);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid var(--rule);
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold-bright);
+  }
+
+  /* Hero right column - dev clip */
+  .hero-clip {
+    position: relative;
+    border: 1px solid var(--rule);
+    background: var(--bg-card);
+    padding: 12px;
+    animation: heroIn 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-clip::before {
+    content: 'EVIDENCE · 001';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--bg);
+    padding: 2px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+  }
+  .hero-clip video {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    background: #000;
+    display: block;
+  }
+  .hero-clip-caption {
+    margin-top: 12px;
+    padding: 0 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--cream-dim);
+    line-height: 1.6;
+  }
+  .hero-clip-caption span {
+    color: var(--gold);
+  }
+
+  /* ==================== SECTION SHARED ==================== */
+  section {
+    padding: 120px 40px;
+    position: relative;
+  }
+  .section-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .section-header {
+    margin-bottom: 80px;
+    max-width: 800px;
+  }
+  .section-kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-kicker::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .section-deck {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream-dim);
+    max-width: 640px;
+  }
+
+  /* ==================== THE MOMENT (DEV CLIP DETAIL) ==================== */
+  .moment {
+    background: linear-gradient(180deg, transparent 0%, var(--bg-soft) 100%);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .moment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .moment-clip {
+    position: relative;
+    aspect-ratio: 9/16;
+    max-height: 80vh;
+    background: #000;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .moment-clip video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .moment-clip-frame {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(245, 196, 90, 0.15);
+    margin: 8px;
+  }
+
+  .moment-text h3 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 32px;
+    color: var(--cream);
+  }
+  .moment-text h3 em {
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .moment-text p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+  .moment-meta {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .moment-meta dt {
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+  .moment-meta dd { color: var(--gold-bright); }
+
+  /* ==================== PRESS / VERIFICATION ==================== */
+  .press {
+    background: var(--bg);
+  }
+  .press-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .press-item {
+    background: var(--bg);
+    padding: 36px 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.3s, transform 0.3s;
+    display: block;
+  }
+  .press-item:hover {
+    background: var(--bg-card);
+    transform: translateY(-2px);
+  }
+  .press-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .press-headline {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .press-link {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+  .press-link::after {
+    content: ' →';
+    color: var(--gold);
+  }
+  .press-note {
+    margin-top: 60px;
+    padding: 32px 40px;
+    border-left: 3px solid var(--gold);
+    background: var(--bg-soft);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--cream);
+    max-width: 800px;
+  }
+  .press-note strong {
+    color: var(--gold-bright);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ==================== THE THESIS / EDGE ==================== */
+  .edge {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  }
+  .edge-quote {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--cream);
+    max-width: 900px;
+    margin-bottom: 80px;
+    letter-spacing: -1px;
+  }
+  .edge-quote em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+  .edge-quote::before {
+    content: '"';
+    font-size: 1.2em;
+    color: var(--gold);
+    margin-right: 4px;
+  }
+  .edge-quote::after {
+    content: '"';
+    font-size: 1.2em;
+    color: var(--gold);
+  }
+
+  .edge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .edge-card {
+    background: var(--bg);
+    padding: 48px 36px;
+    transition: background 0.3s;
+  }
+  .edge-card:hover { background: var(--bg-card); }
+  .edge-card-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .edge-card-ticker {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+  }
+  .edge-card-ticker .price {
+    color: var(--gold-bright);
+    font-size: 0.7em;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  .edge-card-line {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--cream-dim);
+  }
+
+  /* ==================== NARRATIVE ==================== */
+  .narrative {
+    background: var(--bg);
+  }
+  .narrative-list {
+    display: grid;
+    gap: 32px;
+    margin: 60px 0;
+    max-width: 900px;
+  }
+  .narrative-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .narrative-row:last-of-type { border-bottom: none; }
+  .narrative-old {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--cream-dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+  }
+  .narrative-arrow {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 4px;
+  }
+  .narrative-new {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: -0.5px;
+  }
+  .narrative-new em {
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .narrative-punch {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-style: italic;
+    color: var(--cream);
+    margin-top: 60px;
+    max-width: 700px;
+    line-height: 1.4;
+  }
+  .narrative-punch strong {
+    font-style: normal;
+    color: var(--gold-bright);
+    font-weight: 600;
+  }
+
+  /* ==================== LAUNCH FILM ==================== */
+  .film {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .film-frame {
+    max-width: 540px;
+    margin: 60px auto 0;
+    border: 1px solid var(--rule);
+    background: var(--bg-card);
+    padding: 16px;
+    position: relative;
+  }
+  .film-frame::before {
+    content: 'FILM · 2026';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background: var(--bg-soft);
+    padding: 2px 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+  }
+  .film-frame video {
+    width: 100%;
+    aspect-ratio: 540/927;
+    background: #000;
+    display: block;
+  }
+  .film-caption {
+    margin-top: 16px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  /* ==================== HOW TO BUY ==================== */
+  .buy {
+    background: var(--bg);
+  }
+  .buy-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .buy-step {
+    padding: 36px 32px;
+    border: 1px solid var(--rule);
+    background: var(--bg-soft);
+    position: relative;
+  }
+  .buy-step-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 56px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .buy-step-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .buy-step-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--cream-dim);
+  }
+  .buy-step-text a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .buy-step-text a:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+  .buy-contract {
+    background: var(--bg-soft);
+    border: 1px solid var(--gold-dim);
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .buy-contract-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .buy-contract-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .buy-contract-address {
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--cream);
+    word-break: break-all;
+    flex: 1;
+    min-width: 280px;
+    letter-spacing: 0.5px;
+  }
+  .buy-contract-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    background: var(--gold);
+    color: var(--bg);
+    border: none;
+    padding: 14px 22px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .copy-btn:hover {
+    background: var(--gold-bright);
+    transform: translateY(-1px);
+  }
+  .copy-btn.copied {
+    background: #4ade80;
+    color: var(--bg);
+  }
+
+  /* ==================== FOOTER ==================== */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+    padding: 80px 40px 40px;
+  }
+  .footer-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .footer-mark {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .footer-mark .lockup {
+    font-family: var(--serif);
+    font-size: clamp(80px, 12vw, 200px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--gold-bright);
+    letter-spacing: -8px;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold-dim) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .footer-mark .tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--cream-dim);
+    margin-top: 16px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-bright); }
+
+  .footer-legal {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    text-align: center;
+    opacity: 0.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+    .hero-clip { max-width: 360px; margin: 0 auto; }
+    .moment-grid { grid-template-columns: 1fr; gap: 60px; }
+    .moment-clip { max-width: 400px; margin: 0 auto; }
+    .press-list { grid-template-columns: 1fr; }
+    .edge-grid { grid-template-columns: 1fr; }
+    .buy-steps { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; height: 64px; }
+    .nav-links { display: none; }
+    .nav-links .nav-cta { display: inline-flex; }
+    .nav-links { display: flex; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    section { padding: 80px 20px; }
+    .hero { padding: 140px 20px 80px; }
+    .narrative-row { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+    .narrative-arrow { transform: rotate(90deg); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .brand-text { font-size: 18px; }
+    .hero-meta-row { flex-direction: column; gap: 4px; }
+    .hero-meta-label { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TICKER BAR ============ -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <span>$SI <span class="arrow">▲</span></span>
+    <span>SUPERIOR INTELLIGENCE</span>
+    <span>· MAR-A-LAGO · 25 APRIL 2026 ·</span>
+    <span>RECORDED INSIDE</span>
+    <span>BEFORE THE PRESS CAUGHT UP</span>
+    <span>THE UPGRADE IS LIVE</span>
+    <span>$SI <span class="arrow">▲</span></span>
+    <span>SUPERIOR INTELLIGENCE</span>
+    <span>· MAR-A-LAGO · 25 APRIL 2026 ·</span>
+    <span>RECORDED INSIDE</span>
+    <span>BEFORE THE PRESS CAUGHT UP</span>
+    <span>THE UPGRADE IS LIVE</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        Superior Intelligence
+        <small>$SI · ETH</small>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#moment">The Moment</a>
+      <a href="#press">Press</a>
+      <a href="#edge">The Edge</a>
+      <a href="#buy">How to Buy</a>
+      <a href="https://x.com/superiorintETH" target="_blank" rel="noopener">X</a>
+      <a class="nav-cta" href="#buy">Buy $SI</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="hero-bg-img"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-kicker">
+        <span class="dot"></span>
+        <span>BREAKING · ON CHAIN</span>
+        <span class="sep">/</span>
+        <span>25 APR 2026</span>
+      </div>
+      <h1 class="hero-title">
+        Before the<br>
+        <span class="strike">press</span> <em>caught up.</em>
+      </h1>
+      <p class="hero-deck">
+        April 25. Mar-a-Lago. The room heard a phrase nobody else had: <em>Superior Intelligence.</em> The cameras missed it. We didn't.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-row">
+          <span class="hero-meta-label">Ticker</span>
+          <span class="hero-meta-value">$SI · ETH</span>
+        </div>
+        <div class="hero-meta-row">
+          <span class="hero-meta-label">Contract</span>
+          <span class="hero-meta-value contract" data-contract="0x91139d452c144486D49B388509e459AB8748d07B" onclick="copyContract(this)">
+            0x91139d452c144486D49B388509e459AB8748d07B
+            <span class="copy-hint">tap to copy</span>
+          </span>
+        </div>
+        <div class="hero-meta-row">
+          <span class="hero-meta-label">Source</span>
+          <span class="hero-meta-value">$TRUMP holders gala</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#buy">
+          Buy $SI on Uniswap →
+        </a>
+        <a class="btn btn-ghost" href="#moment">
+          Watch the moment
+        </a>
+      </div>
+    </div>
+    <div class="hero-clip">
+      <video src="dev_clip.mp4" muted loop autoplay playsinline preload="metadata"></video>
+      <div class="hero-clip-caption">
+        <span>RECORDED FROM THE AUDIENCE.</span><br>
+        Mar-a-Lago ballroom. 25 April 2026. Phone capture, no press riser.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MOMENT ============ -->
+<section class="moment" id="moment">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">EVIDENCE · 001</div>
+      <h2 class="section-title">
+        Recorded inside.<br>
+        <em>Before the cameras.</em>
+      </h2>
+      <p class="section-deck">
+        On April 25, 2026, Trump hosted the second annual $TRUMP holders gala at Mar-a-Lago. Press covered the contest. We captured the speech. The phrase he used had never been said before in public.
+      </p>
+    </div>
+    <div class="moment-grid">
+      <div class="moment-clip">
+        <video src="dev_clip.mp4" controls muted loop playsinline preload="metadata"></video>
+        <div class="moment-clip-frame"></div>
+      </div>
+      <div class="moment-text">
+        <h3>One phrase.<br><em>One ignition.</em></h3>
+        <p>
+          Two hundred ninety-seven of the largest $TRUMP holders. One ballroom. One keynote. One phrase that hadn't entered the public record yet — and won't, until the press finds the clip we already had.
+        </p>
+        <p>
+          This is what frontrunning a narrative looks like before the narrative knows its name.
+        </p>
+        <dl class="moment-meta">
+          <dt>Date</dt>      <dd>April 25, 2026</dd>
+          <dt>Venue</dt>     <dd>Mar-a-Lago, Palm Beach</dd>
+          <dt>Event</dt>     <dd>$TRUMP holders gala / keynote</dd>
+          <dt>Attendance</dt><dd>~297 token holders</dd>
+          <dt>Recording</dt> <dd>Audience capture · unreleased</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRESS ============ -->
+<section class="press" id="press">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">VERIFICATION · ON RECORD</div>
+      <h2 class="section-title">
+        The event <em>is documented.</em><br>
+        The phrase isn't — yet.
+      </h2>
+      <p class="section-deck">
+        Major outlets covered the gala. None of them caught what was said in the keynote about the next era of intelligence. That gap is the trade.
+      </p>
+    </div>
+
+    <div class="press-list">
+      <a class="press-item" href="https://www.cnbc.com/2026/04/25/trump-hosts-crypto-contest-winners-at-mar-a-lago-as-his-coin-languishes.html" target="_blank" rel="noopener">
+        <div class="press-source">CNBC · April 25</div>
+        <div class="press-headline">Trump hosts crypto contest winners at Mar-a-Lago as his coin languishes</div>
+        <div class="press-link">Read the article</div>
+      </a>
+      <a class="press-item" href="https://www.washingtonpost.com/politics/2026/04/25/trump-crypto-meme-coin-conference/" target="_blank" rel="noopener">
+        <div class="press-source">Washington Post · April 25</div>
+        <div class="press-headline">Mike Tyson, Trump watches and meme coins: Crypto takes over Mar-a-Lago</div>
+        <div class="press-link">Read the article</div>
+      </a>
+      <a class="press-item" href="https://www.usnews.com/news/politics/articles/2026-04-25/trump-hosts-crypto-contest-winners-at-mar-a-lago-as-his-coin-languishes" target="_blank" rel="noopener">
+        <div class="press-source">Reuters / US News · April 25</div>
+        <div class="press-headline">Trump set to host top buyers of $TRUMP at most exclusive crypto conference</div>
+        <div class="press-link">Read the article</div>
+      </a>
+      <a class="press-item" href="https://www.irishtimes.com/world/us/2026/04/25/trump-hosts-crypto-contest-winners-at-mar-a-lago-as-his-meme-coin-plunges-in-value/" target="_blank" rel="noopener">
+        <div class="press-source">Irish Times · April 25</div>
+        <div class="press-headline">Trump hosts crypto contest winners at Mar-a-Lago as his meme coin plunges in value</div>
+        <div class="press-link">Read the article</div>
+      </a>
+    </div>
+
+    <div class="press-note">
+      Most of the press wrote about the contest. <strong>We were listening to the speech.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE EDGE ============ -->
+<section class="edge" id="edge">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">THE EDGE · WHY EARLY MATTERS</div>
+      <h2 class="section-title">CT always asks <em>where the edge is.</em></h2>
+    </div>
+    <p class="edge-quote">
+      It isn't charts. It isn't indicators. It isn't copy trading. It's <em>being early.</em>
+    </p>
+    <div class="edge-grid">
+      <div class="edge-card">
+        <div class="edge-card-num">CASE 01</div>
+        <div class="edge-card-ticker">$ASTEROID <span class="price">&lt; $0.01</span></div>
+        <div class="edge-card-line">Early was free. The narrative arrived later — for everyone else.</div>
+      </div>
+      <div class="edge-card">
+        <div class="edge-card-num">CASE 02</div>
+        <div class="edge-card-ticker">$WIF · $POPCAT</div>
+        <div class="edge-card-line">Early was a year of holding. The cycle figured it out one chart at a time.</div>
+      </div>
+      <div class="edge-card">
+        <div class="edge-card-num">CASE 03</div>
+        <div class="edge-card-ticker">$SI <span class="price">now</span></div>
+        <div class="edge-card-line">Early is a phrase from a room that hasn't reached the headlines yet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NARRATIVE ============ -->
+<section class="narrative">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">THE PATTERN</div>
+      <h2 class="section-title">
+        Every shift in tech<br>started with a <em>renaming.</em>
+      </h2>
+    </div>
+    <div class="narrative-list">
+      <div class="narrative-row">
+        <div class="narrative-old">horseless carriage</div>
+        <div class="narrative-arrow">→</div>
+        <div class="narrative-new">automobile</div>
+      </div>
+      <div class="narrative-row">
+        <div class="narrative-old">electronic mail</div>
+        <div class="narrative-arrow">→</div>
+        <div class="narrative-new">email</div>
+      </div>
+      <div class="narrative-row">
+        <div class="narrative-old">cellular phone</div>
+        <div class="narrative-arrow">→</div>
+        <div class="narrative-new">smartphone</div>
+      </div>
+      <div class="narrative-row">
+        <div class="narrative-old">artificial intelligence</div>
+        <div class="narrative-arrow">→</div>
+        <div class="narrative-new"><em>superior intelligence</em></div>
+      </div>
+    </div>
+    <p class="narrative-punch">
+      The President filled in the blank. <strong>We were paying attention.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ============ LAUNCH FILM ============ -->
+<section class="film">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">THE FILM</div>
+      <h2 class="section-title">
+        Forty-two seconds.<br>
+        <em>The whole thesis.</em>
+      </h2>
+    </div>
+    <div class="film-frame">
+      <video src="launch_film.mp4" controls muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="film-caption" style="margin-top: 20px;">
+      Best with sound on.
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO BUY ============ -->
+<section class="buy" id="buy">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-kicker">HOW TO BUY · ETHEREUM</div>
+      <h2 class="section-title">Three steps.<br><em>Front-run the narrative.</em></h2>
+    </div>
+    <div class="buy-steps">
+      <div class="buy-step">
+        <div class="buy-step-num">i.</div>
+        <div class="buy-step-title">Get an ETH wallet</div>
+        <div class="buy-step-text">
+          Install <a href="https://metamask.io" target="_blank" rel="noopener">MetaMask</a> or <a href="https://rabby.io" target="_blank" rel="noopener">Rabby</a>. Browser extension or mobile app. Save your seed phrase offline.
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">ii.</div>
+        <div class="buy-step-title">Fund with ETH</div>
+        <div class="buy-step-text">
+          Send Ethereum (ETH) to your wallet from any major exchange. Coinbase, Binance, Kraken — all work. You'll need ETH for the swap and for gas.
+        </div>
+      </div>
+      <div class="buy-step">
+        <div class="buy-step-num">iii.</div>
+        <div class="buy-step-title">Swap on Uniswap</div>
+        <div class="buy-step-text">
+          Open <a href="https://app.uniswap.org" target="_blank" rel="noopener">app.uniswap.org</a>. Paste the contract below. Confirm the swap. You're in.
+        </div>
+      </div>
+    </div>
+
+    <div class="buy-contract">
+      <div class="buy-contract-label">$SI Contract Address · Ethereum</div>
+      <div class="buy-contract-row">
+        <div class="buy-contract-address" id="contractAddress">0x91139d452c144486D49B388509e459AB8748d07B</div>
+        <div class="buy-contract-actions">
+          <button class="copy-btn" onclick="copyContractMain(this)">Copy</button>
+          <a class="copy-btn" href="https://app.uniswap.org/#/swap?outputCurrency=0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Open Uniswap →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <div class="lockup">$SI</div>
+      <div class="tagline">The upgrade is live.</div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="#moment">The Moment</a></li>
+          <li><a href="#press">Press</a></li>
+          <li><a href="#edge">The Edge</a></li>
+          <li><a href="#buy">How to Buy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Channels</h4>
+        <ul>
+          <li><a href="https://x.com/superiorintETH" target="_blank" rel="noopener">@superiorintETH on X</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Telegram (coming)</a></li>
+          <li><a href="https://app.uniswap.org/#/swap?outputCurrency=0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Uniswap</a></li>
+          <li><a href="https://etherscan.io/token/0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Etherscan</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contract</h4>
+        <ul>
+          <li style="font-family: var(--mono); font-size: 11px; word-break: break-all; color: var(--cream-dim);">0x91139d452c144486D49B388509e459AB8748d07B</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-legal">
+      $SI is a memecoin. No team promises. No utility claims. No price predictions. Nothing on this site is financial advice. Crypto carries risk including total loss. Do your own research. The event referenced occurred on April 25, 2026 at Mar-a-Lago and was widely reported in the press; the linked articles are attribution to those reports. The phrase "Superior Intelligence" and the speech footage attributed to the keynote represent the team's own recording from inside the venue.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Copy-to-clipboard for contract address
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+  function copyContract(el) {
+    const addr = el.dataset.contract;
+    copyToClipboard(addr).then(() => {
+      const hint = el.querySelector('.copy-hint');
+      if (hint) {
+        const orig = hint.textContent;
+        hint.textContent = 'copied ✓';
+        hint.style.color = '#4ade80';
+        hint.style.opacity = '1';
+        setTimeout(() => {
+          hint.textContent = orig;
+          hint.style.color = '';
+          hint.style.opacity = '';
+        }, 1800);
+      }
+    });
+  }
+  function copyContractMain(btn) {
+    const addr = document.getElementById('contractAddress').textContent.trim();
+    copyToClipboard(addr).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 1800);
+    });
+  }
+
+  // Pause hero clip when scrolled past, resume when back
+  const heroVid = document.querySelector('.hero-clip video');
+  if (heroVid && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) heroVid.play().catch(()=>{});
+        else heroVid.pause();
+      });
+    }, { threshold: 0.1 });
+    obs.observe(heroVid);
+  }
+</script>
+
+</body>
+</html>
