@@ -234,13 +234,14 @@
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    background: url('banner_poster.jpg') center/cover;
   }
   .hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 70%, var(--bg) 100%);
+      linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.65) 60%, rgba(10,10,10,0.95) 100%);
     z-index: 2;
   }
   .hero-bg video {
@@ -249,7 +250,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.55;
+    opacity: 0.85;
     z-index: 1;
   }
 
@@ -400,11 +401,24 @@
   }
   .hero-meta-value.contract:hover { color: var(--cream); }
   .copy-hint {
-    color: var(--cream-dim);
-    font-size: 10px;
-    margin-left: 8px;
-    opacity: 0.5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
+    vertical-align: middle;
+    color: var(--gold);
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s, transform 0.2s;
+    cursor: pointer;
   }
+  .copy-hint:hover { opacity: 1; transform: scale(1.1); }
+  .copy-hint svg { width: 16px; height: 16px; display: block; }
+  .copy-hint.copied { color: #4ade80; opacity: 1; }
+  .copy-hint .check-icon { display: none; }
+  .copy-hint.copied .copy-icon { display: none; }
+  .copy-hint.copied .check-icon { display: block; }
 
   .hero-actions {
     display: flex;
@@ -1119,7 +1133,8 @@
       <a href="#edge">The Edge</a>
       <a href="#buy">How to Buy</a>
       <a href="https://x.com/superiorintETH" target="_blank" rel="noopener">X</a>
-      <a class="nav-cta" href="#buy">Buy $SI</a>
+      <a href="https://t.me/superiorintelligence_trump" target="_blank" rel="noopener">TG</a>
+      <a class="nav-cta" href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0x91139d452c144486d49b388509e459ab8748d07b" target="_blank" rel="noopener">Buy $SI</a>
     </div>
   </div>
 </nav>
@@ -1127,7 +1142,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <video src="banner_animated.mp4" muted loop autoplay playsinline preload="auto"></video>
+    <video src="banner_animated.mp4" poster="banner_poster.jpg" muted loop autoplay playsinline preload="auto"></video>
   </div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -1155,7 +1170,15 @@
           <span class="hero-meta-label">Contract</span>
           <span class="hero-meta-value contract" data-contract="0x91139d452c144486D49B388509e459AB8748d07B" onclick="copyContract(this)">
             0x91139d452c144486D49B388509e459AB8748d07B
-            <span class="copy-hint">tap to copy</span>
+            <span class="copy-hint" title="Copy contract address">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M5 15V5C5 3.89543 5.89543 3 7 3H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
           </span>
         </div>
         <div class="hero-meta-row">
@@ -1164,7 +1187,7 @@
         </div>
       </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#buy">
+        <a class="btn btn-primary" href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0x91139d452c144486d49b388509e459ab8748d07b" target="_blank" rel="noopener">
           Buy $SI on Uniswap →
         </a>
         <a class="btn btn-ghost" href="#moment">
@@ -1323,7 +1346,7 @@
         <div class="buy-contract-address" id="contractAddress">0x91139d452c144486D49B388509e459AB8748d07B</div>
         <div class="buy-contract-actions">
           <button class="copy-btn" onclick="copyContractMain(this)">Copy</button>
-          <a class="copy-btn" href="https://app.uniswap.org/#/swap?outputCurrency=0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Open Uniswap →</a>
+          <a class="copy-btn" href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0x91139d452c144486d49b388509e459ab8748d07b" target="_blank" rel="noopener">Open Uniswap →</a>
         </div>
       </div>
     </div>
@@ -1353,8 +1376,8 @@
         <h4>Channels</h4>
         <ul>
           <li><a href="https://x.com/superiorintETH" target="_blank" rel="noopener">@superiorintETH on X</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Telegram (coming)</a></li>
-          <li><a href="https://app.uniswap.org/#/swap?outputCurrency=0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Uniswap</a></li>
+          <li><a href="https://t.me/superiorintelligence_trump" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://app.uniswap.org/swap?chain=mainnet&inputCurrency=NATIVE&outputCurrency=0x91139d452c144486d49b388509e459ab8748d07b" target="_blank" rel="noopener">Uniswap</a></li>
           <li><a href="https://etherscan.io/token/0x91139d452c144486D49B388509e459AB8748d07B" target="_blank" rel="noopener">Etherscan</a></li>
         </ul>
       </div>
@@ -1394,14 +1417,9 @@
     copyToClipboard(addr).then(() => {
       const hint = el.querySelector('.copy-hint');
       if (hint) {
-        const orig = hint.textContent;
-        hint.textContent = 'copied ✓';
-        hint.style.color = '#4ade80';
-        hint.style.opacity = '1';
+        hint.classList.add('copied');
         setTimeout(() => {
-          hint.textContent = orig;
-          hint.style.color = '';
-          hint.style.opacity = '';
+          hint.classList.remove('copied');
         }, 1800);
       }
     });
