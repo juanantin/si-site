@@ -41,14 +41,18 @@
   :root {
     /* Palette sampled from si_logo.png / si_banner.jpg:
        midnight navy -> sunset gold, with the logotype's warm cream. */
-    --bg: #0a121b;
-    --bg-soft: #0f1c28;
-    --bg-card: #132433;
+    --bg: #0f1924;
+    --bg-soft: #17222e;
+    --bg-card: #1d2b38;
+    /* The Mar-a-Lago sky, straight off the banner. */
+    --sky: #2b4055;
+    --sky-mid: #31465b;
+    --sky-light: #79a1c3;
     --gold: #d9a05f;
     --gold-bright: #f6ce91;
     --gold-dim: #8a6136;
     --cream: #fef5e6;
-    --cream-dim: #a7b3c0;
+    --cream-dim: #abb8c4;
     --rule: rgba(230, 176, 112, 0.25);
     --red: #c8362e;
 
@@ -87,7 +91,7 @@
       linear-gradient(90deg, rgba(230, 176, 112, 0.04) 1px, transparent 1px),
       /* Original radial atmosphere */
       radial-gradient(ellipse 60% 40% at 80% 0%, rgba(230, 176, 112, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(64, 83, 100, 0.14) 0%, transparent 60%);
+      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(90, 125, 160, 0.20) 0%, transparent 60%);
     background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%;
   }
 
@@ -152,7 +156,7 @@
     left: 0;
     right: 0;
     height: 72px;
-    background: rgba(10, 18, 27, 0.85);
+    background: rgba(15, 25, 36, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--rule);
@@ -247,8 +251,8 @@
     overflow: hidden;
     background:
       radial-gradient(ellipse 80% 60% at 50% 30%, rgba(230, 176, 112, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(64, 83, 100, 0.16) 0%, transparent 60%),
-      linear-gradient(170deg, #16283a 0%, #0d1a27 55%, var(--bg) 100%);
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(90, 125, 160, 0.22) 0%, transparent 60%),
+      linear-gradient(170deg, var(--sky) 0%, #1b2c3d 45%, var(--bg) 100%);
   }
   /* The brand banner sits behind the hero, dissolving into the navy. */
   .hero-bg::before {
@@ -268,7 +272,7 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, var(--bg) 0%, rgba(10, 18, 27, 0.55) 45%, transparent 100%),
+      linear-gradient(90deg, var(--bg) 0%, rgba(15, 25, 36, 0.55) 45%, transparent 100%),
       linear-gradient(180deg, transparent 60%, var(--bg) 100%);
     z-index: 2;
   }
@@ -474,7 +478,7 @@
     letter-spacing: 2px;
   }
   .hero-meta-label {
-    color: var(--cream-dim);
+    color: var(--sky-light);
     text-transform: uppercase;
     width: 140px;
     flex-shrink: 0;
@@ -1284,8 +1288,9 @@
     width: 100%;
     overflow: hidden;
     background: var(--bg);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    /* Sky-toned rules, so the plate meets the page in its own colour. */
+    border-top: 1px solid var(--sky-mid);
+    border-bottom: 1px solid var(--sky-mid);
   }
   .brandplate img {
     display: block;
