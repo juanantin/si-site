@@ -916,78 +916,6 @@
     .quote-body { max-width: 100%; font-size: 32px; }
   }
 
-  /* ==================== THE THESIS / EDGE ==================== */
-  .edge {
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
-  }
-  .edge-quote {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 48px);
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--cream);
-    max-width: 900px;
-    margin-bottom: 80px;
-    letter-spacing: -1px;
-  }
-  .edge-quote em {
-    color: var(--gold-bright);
-    font-style: italic;
-  }
-  .edge-quote::before {
-    content: '"';
-    font-size: 1.2em;
-    color: var(--gold);
-    margin-right: 4px;
-  }
-  .edge-quote::after {
-    content: '"';
-    font-size: 1.2em;
-    color: var(--gold);
-  }
-
-  .edge-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
-  .edge-card {
-    background: var(--bg);
-    padding: 48px 36px;
-    transition: background 0.3s;
-  }
-  .edge-card:hover { background: var(--bg-card); }
-  .edge-card-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--gold);
-    margin-bottom: 24px;
-  }
-  .edge-card-ticker {
-    font-family: var(--serif);
-    font-size: 36px;
-    font-weight: 600;
-    color: var(--cream);
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-  }
-  .edge-card-ticker .price {
-    color: var(--gold-bright);
-    font-size: 0.7em;
-    margin-left: 8px;
-    font-weight: 400;
-  }
-  .edge-card-line {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.5;
-    color: var(--cream-dim);
-  }
-
   /* ==================== NARRATIVE ==================== */
   .narrative {
     background: var(--bg);
@@ -1282,6 +1210,169 @@
     margin: 0 auto;
   }
 
+  /* ==================== THE VOTE ==================== */
+  .vote {
+    background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+  }
+  .vote-quote {
+    max-width: 860px;
+    margin: 64px 0 0;
+    padding: 0 0 0 36px;
+    border-left: 3px solid var(--gold);
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 34px);
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--cream);
+  }
+  .vote-quote em {
+    font-style: italic;
+    color: var(--gold-bright);
+  }
+  .vote-quote cite {
+    display: block;
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sky-light);
+  }
+
+  /* --- the result board --- */
+  .poll {
+    margin-top: 64px;
+    max-width: 860px;
+    border: 1px solid var(--rule);
+    background: var(--bg-card);
+    padding: 32px 36px;
+  }
+  .poll-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .poll-head .poll-label { color: var(--gold); }
+  .poll-head .poll-asof { color: var(--cream-dim); letter-spacing: 2px; }
+
+  .poll-row {
+    display: grid;
+    grid-template-columns: 1fr 64px;
+    gap: 6px 20px;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .poll-row:last-of-type { margin-bottom: 0; }
+  .poll-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--cream);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .poll-name .poll-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--sky-light);
+    border: 1px solid var(--sky-mid);
+    padding: 2px 6px;
+  }
+  .poll-pct {
+    font-family: var(--mono);
+    font-size: 15px;
+    text-align: right;
+    color: var(--cream-dim);
+  }
+  .poll-bar {
+    grid-column: 1 / -1;
+    height: 8px;
+    background: var(--sky);
+    overflow: hidden;
+  }
+  .poll-bar span {
+    display: block;
+    height: 100%;
+    background: var(--sky-light);
+    /* Width is set inline per row — it is data, not styling. */
+  }
+
+  /* The winning row carries the brand gold. */
+  .poll-row-win .poll-name { color: var(--gold-bright); font-weight: 600; }
+  .poll-row-win .poll-pct { color: var(--gold-bright); font-size: 17px; }
+  .poll-row-win .poll-bar span {
+    background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold) 55%, var(--gold-bright) 100%);
+    box-shadow: 0 0 24px rgba(230, 176, 112, 0.45);
+  }
+  .poll-row-out .poll-name,
+  .poll-row-out .poll-pct {
+    color: var(--cream-dim);
+    opacity: 0.55;
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+  .poll-row-out .poll-pct { text-decoration: none; }
+
+  .poll-note {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--cream-dim);
+  }
+
+  /* --- source links --- */
+  .vote-sources {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .vote-sources .vote-src-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-right: 4px;
+  }
+  .vote-sources a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    padding: 9px 14px;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .vote-sources a:hover {
+    color: var(--gold-bright);
+    border-color: var(--gold);
+    background: var(--bg-soft);
+  }
+  .vote-sources a.is-primary {
+    color: var(--bg);
+    background: var(--gold);
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+  .vote-sources a.is-primary:hover { background: var(--gold-bright); color: var(--bg); }
+
   /* ==================== BRAND PLATE ==================== */
   .brandplate {
     position: relative;
@@ -1317,7 +1408,6 @@
     .evidence-grid { grid-template-columns: 1fr; gap: 60px; max-width: 480px; margin-left: auto; margin-right: auto; }
     .moment-meta-bottom { grid-template-columns: repeat(2, 1fr); }
     .press-list { grid-template-columns: 1fr; }
-    .edge-grid { grid-template-columns: 1fr; }
     .buy-steps { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
   }
@@ -1338,6 +1428,9 @@
     .brand-mark { width: 36px; height: 36px; }
     .hero-meta-row { flex-direction: column; gap: 4px; }
     .hero-meta-label { width: auto; }
+    .vote-quote { padding-left: 20px; }
+    .poll { padding: 24px 20px; }
+    .poll-name { font-size: 18px; }
     /* Crop the banner in on the logotype so it stays readable. */
     .brandplate img { height: 190px; object-position: 55% center; }
     .brandplate::after {
@@ -1380,7 +1473,7 @@
     <div class="nav-links">
       <a href="#moment">The Moment</a>
       <a href="#press">Press</a>
-      <a href="#edge">The Edge</a>
+      <a href="#vote">The Vote</a>
       <a href="#buy">How to Buy</a>
       <a href="https://x.com/superiorintETH" target="_blank" rel="noopener">X</a>
       <a href="https://t.me/superiorintelligence_trump" target="_blank" rel="noopener">TG</a>
@@ -1531,7 +1624,7 @@
       <div class="section-kicker">VERIFICATION · ON RECORD</div>
       <h2 class="section-title">
         The event <em>is documented.</em><br>
-        The phrase isn't — yet.
+        Now the phrase is too.
       </h2>
     </div>
 
@@ -1564,32 +1657,69 @@
   </div>
 </section>
 
-<!-- ============ THE EDGE ============ -->
-<section class="edge" id="edge">
+<!-- ============ THE VOTE ============ -->
+<section class="vote" id="vote">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-kicker">THE EDGE</div>
-      <h2 class="section-title">CT always asks <em>where the edge is.</em></h2>
+      <div class="section-kicker">THE VOTE · SEPTEMBER 2026</div>
+      <h2 class="section-title">
+        Five months later,<br>
+        <em>he put it to a vote.</em>
+      </h2>
+      <p class="section-deck">
+        On September 19, 2026, President Trump posted a poll asking his followers to rename
+        artificial intelligence — calling the current term &ldquo;inaccurate, and very
+        ineloquent.&rdquo; He offered three replacements. The first one was the phrase from
+        the Mar-a-Lago ballroom.
+      </p>
     </div>
-    <p class="edge-quote">
-      It isn't charts. It isn't indicators. It's <em>being early.</em>
-    </p>
-    <div class="edge-grid">
-      <div class="edge-card">
-        <div class="edge-card-num">CASE 01</div>
-        <div class="edge-card-ticker">$ASTEROID <span class="price">&lt; $0.01</span></div>
-        <div class="edge-card-line">Early was free. The narrative arrived later — for everyone else.</div>
+
+    <blockquote class="vote-quote">
+      A far more elegant and accurate description of this new phenomena would be
+      <em>Superior Intelligence (SI)</em> or, Extreme Intelligence (EI) or,
+      Supreme Intelligence (SI).
+      <cite>President Donald J. Trump · September 19, 2026</cite>
+    </blockquote>
+
+    <div class="poll">
+      <div class="poll-head">
+        <span class="poll-label">The Final Two · Running Result</span>
+        <span class="poll-asof">Reported Sept 20, 2026</span>
       </div>
-      <div class="edge-card">
-        <div class="edge-card-num">CASE 02</div>
-        <div class="edge-card-ticker">$WIF · $POPCAT</div>
-        <div class="edge-card-line">Early was a year of holding. The cycle figured it out one chart at a time.</div>
+
+      <div class="poll-row poll-row-win">
+        <div class="poll-name">Superior Intelligence <span class="poll-tag">SI</span></div>
+        <div class="poll-pct">57.5%</div>
+        <div class="poll-bar"><span style="width: 57.5%"></span></div>
       </div>
-      <div class="edge-card">
-        <div class="edge-card-num">CASE 03</div>
-        <div class="edge-card-ticker">$SI <span class="price">now</span></div>
-        <div class="edge-card-line">Early is a phrase from a room that hasn't reached the headlines yet.</div>
+
+      <div class="poll-row">
+        <div class="poll-name">Extreme Intelligence <span class="poll-tag">EI</span></div>
+        <div class="poll-pct">42.5%</div>
+        <div class="poll-bar"><span style="width: 42.5%"></span></div>
       </div>
+
+      <div class="poll-row poll-row-out">
+        <div class="poll-name">Supreme Intelligence</div>
+        <div class="poll-pct">cut</div>
+        <div class="poll-bar"><span style="width: 0%"></span></div>
+      </div>
+
+      <p class="poll-note">
+        Trump dropped &ldquo;Supreme Intelligence&rdquo; partway through — by his own account it was
+        &ldquo;losing badly&rdquo; to the other two, probably, he said, because of its relationship to the
+        Supreme Court — and left the field to the final two. Over 27,000 votes were in within hours.
+        <strong>Superior Intelligence led at 57.5%.</strong> The share for Extreme Intelligence is the
+        remainder of a two-way vote.
+      </p>
+    </div>
+
+    <div class="vote-sources">
+      <span class="vote-src-label">Proof</span>
+      <a class="is-primary" href="https://x.com/realDonaldTrump/status/2101698076670902657" target="_blank" rel="noopener">The post on X →</a>
+      <a href="https://www.forbes.com/sites/maryroeloffs/2026/09/19/trump-asks-followers-to-pick-a-more-elegant-name-for-ai/" target="_blank" rel="noopener">Forbes</a>
+      <a href="https://thehill.com/homenews/administration/6099834-trump-proposes-new-a-i-names/" target="_blank" rel="noopener">The Hill</a>
+      <a href="https://gizmodo.com/youll-never-guess-what-trump-wants-to-rename-now-2000814488" target="_blank" rel="noopener">Gizmodo</a>
     </div>
   </div>
 </section>
@@ -1652,7 +1782,7 @@
         <ul>
           <li><a href="#moment">The Moment</a></li>
           <li><a href="#press">Press</a></li>
-          <li><a href="#edge">The Edge</a></li>
+          <li><a href="#vote">The Vote</a></li>
           <li><a href="#buy">How to Buy</a></li>
         </ul>
       </div>
