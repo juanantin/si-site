@@ -7,21 +7,30 @@
 <meta name="description" content="April 25, 2026. Mar-a-Lago. Trump named it first. We were in the room.">
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=3">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=3">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=3">
-<meta name="theme-color" content="#d4a945">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=4">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=4">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=4">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png?v=4">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png?v=4">
+<meta name="theme-color" content="#0a121b">
 
 <!-- OG / Twitter tags for link previews -->
 <meta property="og:title" content="$SI — Superior Intelligence">
 <meta property="og:description" content="April 25, 2026. Mar-a-Lago. The phrase before the press caught up.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="icon-512.png">
+<meta property="og:site_name" content="Superior Intelligence">
+<meta property="og:image" content="si_banner.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="427">
+<meta property="og:image:alt" content="Si — Superior Intelligence · Mar-a-Lago · April 25, 2026">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="icon-512.png">
+<meta name="twitter:title" content="$SI — Superior Intelligence">
+<meta name="twitter:description" content="April 25, 2026. Mar-a-Lago. The phrase before the press caught up.">
+<meta name="twitter:image" content="si_banner.jpg">
+
+<!-- Preload the brand banner used by the hero backdrop -->
+<link rel="preload" as="image" href="si_banner.jpg">
 
 <!-- Fonts: refined editorial pairing -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,15 +39,17 @@
 
 <style>
   :root {
-    --bg: #0a0a0a;
-    --bg-soft: #141412;
-    --bg-card: #1a1a18;
-    --gold: #d4a945;
-    --gold-bright: #f5c45a;
-    --gold-dim: #8a6d2c;
-    --cream: #f0e8d8;
-    --cream-dim: #b8b0a0;
-    --rule: rgba(245, 196, 90, 0.25);
+    /* Palette sampled from si_logo.png / si_banner.jpg:
+       midnight navy -> sunset gold, with the logotype's warm cream. */
+    --bg: #0a121b;
+    --bg-soft: #0f1c28;
+    --bg-card: #132433;
+    --gold: #d9a05f;
+    --gold-bright: #f6ce91;
+    --gold-dim: #8a6136;
+    --cream: #fef5e6;
+    --cream-dim: #a7b3c0;
+    --rule: rgba(230, 176, 112, 0.25);
     --red: #c8362e;
 
     --serif: 'Cormorant Garamond', 'Georgia', serif;
@@ -72,11 +83,11 @@
     z-index: -1;
     background:
       /* Circuit grid - the AI/tech layer */
-      linear-gradient(rgba(245, 196, 90, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245, 196, 90, 0.04) 1px, transparent 1px),
+      linear-gradient(rgba(230, 176, 112, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230, 176, 112, 0.04) 1px, transparent 1px),
       /* Original radial atmosphere */
-      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(245, 196, 90, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(200, 54, 46, 0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 40% at 80% 0%, rgba(230, 176, 112, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 0% 100%, rgba(64, 83, 100, 0.14) 0%, transparent 60%);
     background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%;
   }
 
@@ -141,7 +152,7 @@
     left: 0;
     right: 0;
     height: 72px;
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(10, 18, 27, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--rule);
@@ -166,12 +177,12 @@
     color: var(--cream);
   }
   .brand-mark {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    background: url('si_logo.jpg') center/cover;
-    border: 1px solid var(--gold);
-    box-shadow: 0 0 20px rgba(245, 196, 90, 0.3);
+    /* The mark carries its own gold rim — no extra border. */
+    background: url('si_logo.png') center/contain no-repeat;
+    box-shadow: 0 0 22px rgba(230, 176, 112, 0.28);
     flex-shrink: 0;
   }
   .brand-text {
@@ -235,15 +246,30 @@
     z-index: 0;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(245, 196, 90, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(200, 54, 46, 0.05) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0a18 0%, #0a0a0a 100%);
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(230, 176, 112, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(64, 83, 100, 0.16) 0%, transparent 60%),
+      linear-gradient(170deg, #16283a 0%, #0d1a27 55%, var(--bg) 100%);
+  }
+  /* The brand banner sits behind the hero, dissolving into the navy. */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('si_banner.jpg') 72% 45%/cover no-repeat;
+    opacity: 0.38;
+    filter: blur(5px) saturate(1.15);
+    transform: scale(1.08);
+    z-index: 1;
+    -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 55%, transparent 92%);
+    mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 55%, transparent 92%);
   }
   .hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 60%, var(--bg) 100%);
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(10, 18, 27, 0.55) 45%, transparent 100%),
+      linear-gradient(180deg, transparent 60%, var(--bg) 100%);
     z-index: 2;
   }
 
@@ -252,12 +278,10 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background: url('si_logo.jpg') center/cover;
-    border: 1px solid var(--gold);
+    background: url('si_logo.png') center/contain no-repeat;
     box-shadow:
-      0 0 60px rgba(245, 196, 90, 0.4),
-      0 0 120px rgba(245, 196, 90, 0.2),
-      inset 0 0 30px rgba(0, 0, 0, 0.5);
+      0 0 60px rgba(230, 176, 112, 0.4),
+      0 0 120px rgba(230, 176, 112, 0.2);
     margin-bottom: 40px;
     position: relative;
     animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both, logoBreathe 5s ease-in-out infinite 1.2s;
@@ -272,10 +296,10 @@
   }
   @keyframes logoBreathe {
     0%, 100% {
-      box-shadow: 0 0 60px rgba(245, 196, 90, 0.4), 0 0 120px rgba(245, 196, 90, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 60px rgba(230, 176, 112, 0.4), 0 0 120px rgba(230, 176, 112, 0.2);
     }
     50% {
-      box-shadow: 0 0 80px rgba(245, 196, 90, 0.6), 0 0 160px rgba(245, 196, 90, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 80px rgba(230, 176, 112, 0.6), 0 0 160px rgba(230, 176, 112, 0.3);
     }
   }
 
@@ -512,7 +536,7 @@
   .btn-primary:hover {
     background: var(--gold-bright);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(245, 196, 90, 0.3);
+    box-shadow: 0 8px 24px rgba(230, 176, 112, 0.3);
   }
   .btn-ghost {
     background: transparent;
@@ -531,8 +555,8 @@
     background: var(--bg-card);
     padding: 12px;
     box-shadow:
-      0 0 80px rgba(245, 196, 90, 0.15),
-      0 0 200px rgba(245, 196, 90, 0.08);
+      0 0 80px rgba(230, 176, 112, 0.15),
+      0 0 200px rgba(230, 176, 112, 0.08);
     animation: heroIn 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
     /* Width sized so video fills column nicely; max-height gates extreme cases */
     width: 100%;
@@ -543,7 +567,7 @@
     width: 100%;
     aspect-ratio: 9/16;
     object-fit: cover;
-    background: #000;
+    background: #060c13;
     display: block;
     cursor: pointer;
     /* Only kicks in on very short viewports */
@@ -653,11 +677,11 @@
   .evidence-clip {
     position: relative;
     aspect-ratio: 9/16;
-    background: #000;
+    background: #060c13;
     border: 1px solid var(--rule);
     overflow: hidden;
     box-shadow:
-      0 0 40px rgba(245, 196, 90, 0.06);
+      0 0 40px rgba(230, 176, 112, 0.06);
   }
 
   .evidence-clip video {
@@ -806,7 +830,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(245, 196, 90, 0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 50% at 50% 50%, rgba(230, 176, 112, 0.08) 0%, transparent 60%);
     z-index: 0;
     pointer-events: none;
   }
@@ -1048,7 +1072,7 @@
   .film-frame video {
     width: 100%;
     aspect-ratio: 540/927;
-    background: #000;
+    background: #060c13;
     display: block;
   }
   .film-caption {
@@ -1180,13 +1204,11 @@
     width: 160px;
     height: 160px;
     border-radius: 50%;
-    background: url('si_logo.jpg') center/cover;
-    border: 1px solid var(--gold);
+    background: url('si_logo.png') center/contain no-repeat;
     margin: 0 auto 32px;
     box-shadow:
-      0 0 60px rgba(245, 196, 90, 0.3),
-      0 0 120px rgba(245, 196, 90, 0.15),
-      inset 0 0 40px rgba(0, 0, 0, 0.4);
+      0 0 60px rgba(230, 176, 112, 0.3),
+      0 0 120px rgba(230, 176, 112, 0.15);
     animation: logoBreathe 5s ease-in-out infinite;
     position: relative;
   }
@@ -1256,6 +1278,33 @@
     margin: 0 auto;
   }
 
+  /* ==================== BRAND PLATE ==================== */
+  .brandplate {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .brandplate img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: center 42%;
+  }
+  /* Feather the left and right edges into the page. */
+  .brandplate::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+      var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%);
+  }
+
   /* ==================== RESPONSIVE ==================== */
   @media (max-width: 1024px) {
     .hero-inner { grid-template-columns: 1fr; gap: 60px; }
@@ -1284,6 +1333,12 @@
     .brand-mark { width: 36px; height: 36px; }
     .hero-meta-row { flex-direction: column; gap: 4px; }
     .hero-meta-label { width: auto; }
+    /* Crop the banner in on the logotype so it stays readable. */
+    .brandplate img { height: 190px; object-position: 55% center; }
+    .brandplate::after {
+      background: linear-gradient(90deg,
+        var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%);
+    }
   }
 </style>
 </head>
@@ -1334,6 +1389,7 @@
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-text">
+      <div class="hero-logo" role="img" aria-label="Si — Superior Intelligence"></div>
       <div class="hero-kicker">
         <span class="dot"></span>
         <span>BREAKING · ON CHAIN</span>
@@ -1391,6 +1447,13 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ============ BRAND PLATE ============ -->
+<section class="brandplate" aria-label="Superior Intelligence">
+  <img src="si_banner.jpg"
+       alt="Si — Superior Intelligence. Mar-a-Lago, April 25, 2026."
+       width="1280" height="427" loading="lazy" decoding="async">
 </section>
 
 <!-- ============ THE MOMENT ============ -->
